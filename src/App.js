@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+// import React from 'react';
+// import logo from './logo.svg';
 import './App.css';
+import Categoria from './categoria.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+var React = require('react');
+var ReactDom = require('react-dom');
+
+class Categorias extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      categories:[]
+    }
+  }
+  componentDidMount() {
+    fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites/MLA/categories')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          this.setState({
+            categories:data
+          })
+        });
+  }
+
+  render() {
+    return (
+        <div>
+          <ul>
+            {this.state.categories.map((cat,index) =>
+                <li key={index}><Categoria id  />
+
+                </li>
+            )}
+          </ul>
+        </div>
+    );
+  }
+
 }
+//
+// Categorias.defaultProps={
+//   nombre: "Matias"
+// };
 
-export default App;
+export default Categorias;
