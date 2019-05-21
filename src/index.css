@@ -6,7 +6,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+button {
+  position: absolute;
+  right: 50%;
+  width: 20%;
 
+}
+div{
+  align-items: center;
+  align-content: center;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

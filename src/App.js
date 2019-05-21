@@ -10,30 +10,73 @@ class Categorias extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      categories:[]
-    }
+      categories:[],
+      sites:[],
+      clicked:false,
+      index:null
+    };
+    this.verCategoria=this.verCategoria.bind(this);
+    this.verCategorias=this.verCategorias.bind(this);
   }
   componentDidMount() {
+    // fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites')
+    //     .then(response => response.json())
+    //     .then(sites => {
+    //       console.log(sites);
+    //       this.setState({
+    //         sites:sites
+    //       })
+    //     });
     fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites/MLA/categories')
         .then(response => response.json())
-        .then(data => {
-          console.log(data);
+        .then(categorias => {
+          console.log(categorias);
           this.setState({
-            categories:data
+            categories:categorias
           })
         });
   }
+  verCategoria(index){
+    console.log("entró");
+    this.setState({
+      index:index,
+      clicked:true
+    });
+    //ReactDom.render(<Categoria id={id} name={name}/>, document.getElementById('root'))
+  }
+  verCategorias(){
+    console.log("entró");
+    this.setState({
+      index:null,
+      clicked:false
+    });
+    //ReactDom.render(<Categoria id={id} name={name}/>, document.getElementById('root'))
+  }
+
 
   render() {
-    return (
-        <div>
-          <ul>
-            {this.state.categories.map((cat,index) =>
-                <li key={index}><Categoria id  />
+    var vista;
+    if (!this.state.clicked) {
+        vista = <div>
+                   <h2>Lista de categorías</h2>
+                   <ul className="list-group">
+                      {this.state.categories.map((cat, index) =>
+                          <li className="list-group-item" key={index} onClick={this.verCategoria.bind(this, index)}>
+                            {cat.name}
+                          </li>
+                      )}
+                   </ul>
+                </div>
+    } else {
+       vista = <div>
+                  <Categoria id={this.state.categories[this.state.index].id}/>
+                  <button className="btn btn-primary" onClick={this.verCategorias}>VOLVER</button>
+               </div>
+    }
 
-                </li>
-            )}
-          </ul>
+    return (
+        <div className="container">
+          {vista}
         </div>
     );
   }

@@ -11,18 +11,20 @@ class Categoria extends React.Component{
         this.state={
             id: props.id,
             name: props.name,
-            total_item: props.total_item
+            total_item: null,
+            urlImg: null
         }
     }
     componentDidMount() {
         fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/categories/'+this.state.id)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                console.log(data.picture);
                 this.setState({
                     id:data.id,
                     name:data.name,
-                    total_item:data.total_items_in_this_category
+                    total_item:data.total_items_in_this_category,
+                    urlImg:data.picture
                 })
             });
     }
@@ -30,10 +32,10 @@ class Categoria extends React.Component{
     render() {
         return (
             <div className="container">
-                <h1>Categoria</h1>
+                <h2>Categoria</h2>
                 <div className="row">
                     <div className="col-sm">
-                        <img src="http://resources.mlstatic.com/category/images/6fc20d84-2ce6-44ee-8e7e-e5479a78eab0.png" />
+                        <img src={this.state.urlImg} />
                     </div>
                     <div className="col-sm">
                         <ul className="list-group">
