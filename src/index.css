@@ -13,6 +13,7 @@ button {
 
 }
 div{
+  padding: 15px;
   align-items: center;
   align-content: center;
 }
