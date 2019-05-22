@@ -18,16 +18,8 @@ var ReactDom = require('react-dom');
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state={
-
-    };
   }
-
   render() {
-    // const categoria = <div>
-    //                         <Categoria id="MLA1234"/>
-    //                         <button className="btn btn-primary" onClick={this.verCategorias}>VOLVER</button>
-    //                   </div>
     return (
         <div className="container">
           <Router>
@@ -40,7 +32,6 @@ class App extends React.Component{
               </Switch>
             </div>
           </Router>
-          {/*{vista}*/}
         </div>
     );
   }

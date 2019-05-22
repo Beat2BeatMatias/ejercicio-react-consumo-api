@@ -27,7 +27,8 @@ class Sitios extends React.Component {
         return (
             <div>
                 <h2 id="titulo">Sitios</h2>
-                <select id="s_sites" onChange={this.verCategorias}>
+                <hr/>
+                <select className="custom-select" id="s_sites" onChange={this.verCategorias}>
                 {this.state.sites.map((sites, index) =>
                     <option key={index} value={sites.id}>{sites.name}</option>
                 )}

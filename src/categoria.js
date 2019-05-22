@@ -34,6 +34,7 @@ class Categoria extends React.Component{
         return (
             <div className="container">
                 <h2>Categoria</h2>
+                <hr/>
                 <div className="row">
                     <div className="col-sm">
                         <img src={this.state.urlImg} />

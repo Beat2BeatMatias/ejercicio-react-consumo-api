@@ -29,6 +29,7 @@ class Categorias extends React.Component {
         return (
             <div>
                 <h2>Lista de categorias</h2>
+                <hr/>
                 <ul className="list-group">
                     {this.state.categories.map((cat, index) =>
                         <li className="list-group-item" key={index} onClick={this.verCategoria.bind(this, cat.id, cat.name)}>
