@@ -8,9 +8,10 @@ var ReactDom = require('react-dom');
 class Categoria extends React.Component{
     constructor(props){
         super(props);
+        console.log(props.match.params);
         this.state={
-            id: props.id,
-            name: props.name,
+            id: props.match.params.id,
+            name: props.match.params.name,
             total_item: null,
             urlImg: null
         }
