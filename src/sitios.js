@@ -10,7 +10,8 @@ class Sitios extends React.Component {
         this.verCategorias=this.verCategorias.bind(this);
     }
     componentDidMount() {
-        fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites')
+        fetch('localhost:9090/sites/')
+        //fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites')
             .then(response => response.json())
             .then(sites => {
                 this.setState({
@@ -27,12 +28,18 @@ class Sitios extends React.Component {
         return (
             <div>
                 <h2 id="titulo">Sitios</h2>
-                <hr/>
-                <select className="custom-select" id="s_sites" onChange={this.verCategorias}>
-                {this.state.sites.map((sites, index) =>
-                    <option key={index} value={sites.id}>{sites.name}</option>
-                )}
-                </select>
+                <form onSubmit={this.verCategorias}>
+                    <hr/>
+                    <select className="custom-select" id="s_sites" required>
+                        <option value="">Eliga un pais</option>
+                    {this.state.sites.map((sites, index) =>
+                        <option key={index} value={sites.id}>{sites.name}</option>
+                    )}
+                    </select>
+                    <br/>
+                    <br/>
+                    <input className="btn btn-primary" type="submit" value="submit"/>
+                </form>                
             </div>
         )
     }
