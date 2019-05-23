@@ -11,7 +11,7 @@ class Categorias extends React.Component {
         this.mounted=false;
 
     }
-    componentWillMount() {
+    componentDidMount() {
         //fetch('http://localhost:9090/sites/' + this.state.siteId + '/categories')
         fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites/' + this.state.siteId + '/categories')
             .then(response => response.json())
