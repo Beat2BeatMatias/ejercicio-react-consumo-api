@@ -10,8 +10,8 @@ class Sitios extends React.Component {
         this.verCategorias=this.verCategorias.bind(this);
     }
     componentDidMount() {
-        fetch('http://localhost:9090/sites/')
-        //fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites')
+        //fetch('http://localhost:9090/sites/')
+        fetch('https://cors-anywhere.herokuapp.com/api.mercadolibre.com/sites')
             .then(response => response.json())
             .then(sites => {
                 this.setState({
